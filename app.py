@@ -7,9 +7,9 @@ from langchain.prompts import PromptTemplate
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import os
 
-#HF_TOKEN = "YOUR_HUGGING_FACE_TOKEN"  # Replace with your Hugging Face Token
+HF_TOKEN = os.getenv("HF_TOKEN")  # Replace with your Hugging Face Token
 MODEL_NAME = "meta-llama/Llama-3.3b-hf"  # Change this to your specific model
-#SERPAPI_KEY = "YOUR_SERPAPI_KEY"  # Replace with your SerpAPI Key
+SERPAPI_KEY = os.getenv("SERPAPI_KEY")  # Replace with your SerpAPI Key
 
 # Load Tokenizer and Model
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_auth_token=HF_TOKEN)
