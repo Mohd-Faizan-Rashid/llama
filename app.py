@@ -8,12 +8,13 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import os
 
 HF_TOKEN = os.getenv("HF_TOKEN")  # Replace with your Hugging Face Token
-MODEL_NAME = "meta-llama/Llama-3.3b-hf"  # Change this to your specific model
+MODEL_NAME = "meta-llama/Llama-2-7b-hf"  # Change this to your specific model
 SERPAPI_KEY = os.getenv("SERPAPI_KEY")  # Replace with your SerpAPI Key
 
 # Load Tokenizer and Model
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_auth_token=HF_TOKEN)
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.float16, use_auth_token=HF_TOKEN)
+# Load Tokenizer and Model with Token
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, token=HF_TOKEN)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.float16, token=HF_TOKEN)
 model.eval()
 
 # Initialize Flask App
