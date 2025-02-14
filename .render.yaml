@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: llama-serpapi-proxy
+    name: llama
     env: python
     region: oregon  # Change as needed
     buildCommand: "pip install -r requirements.txt"
