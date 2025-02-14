@@ -5,6 +5,7 @@ services:
     region: oregon  # Change as needed
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python app.py"
+    port: 5000
     envVars:
       - key: SERPAPI_KEY
         value: YOUR_SERPAPI_KEY
