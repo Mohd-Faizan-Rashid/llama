@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: llama-serpapi-proxy
+    env: python
+    region: oregon  # Change to your preferred region
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "./start.sh"
+    envVars:
+      - key: SERPAPI_KEY
+        value: YOUR_SERPAPI_KEY
