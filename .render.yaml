@@ -4,7 +4,7 @@ services:
     env: python
     region: oregon  # Change as needed
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "./start.sh"
+    startCommand: "python app.py"
     envVars:
       - key: SERPAPI_KEY
         value: YOUR_SERPAPI_KEY
