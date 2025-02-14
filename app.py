@@ -4,14 +4,16 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
+from transformers import AutoModelForCausalLM, AutoTokenizer
+import os
 
-# Configuration
+HF_TOKEN = "YOUR_HUGGING_FACE_TOKEN"  # Replace with your Hugging Face Token
 MODEL_NAME = "meta-llama/Llama-3.3b-hf"  # Change this to your specific model
 SERPAPI_KEY = "YOUR_SERPAPI_KEY"  # Replace with your SerpAPI Key
 
 # Load Tokenizer and Model
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.float16)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, use_auth_token=HF_TOKEN)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.float16, use_auth_token=HF_TOKEN)
 model.eval()
 
 # Initialize Flask App
@@ -53,5 +55,9 @@ def process_request():
     return jsonify({'response': final_output})
 
 # Main: Run Flask App
+import os
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+
